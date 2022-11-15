@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">CardGuessingGame</string>
+
+    <string name="higher">Higher</string>
+    <string name="lower">Lower</string>
+    <string name="equal">Equal</string>
+    <string name="higher_lower_equal">Higher? Lower? Equal?</string>
+    <string name="play">Play</string>
+    <string name="rules">Rules</string>
+    <string name="textview">TextView</string>
+</resources>
