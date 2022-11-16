@@ -2,7 +2,7 @@ package com.example.highlow
 
 import android.widget.ImageView
 
-class Card (var value: Int, var suits: String, ) {
+class Card (var value: Int, var suits: String, var image: Int) {
 
 
 }
