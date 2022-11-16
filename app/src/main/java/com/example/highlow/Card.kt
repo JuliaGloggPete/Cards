@@ -1,4 +1,8 @@
 package com.example.highlow
 
-class Card {
+import android.widget.ImageView
+
+class Card (var value: Int, var suits: String, var cardImage: ImageView) {
+
+
 }
