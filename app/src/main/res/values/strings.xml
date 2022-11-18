@@ -3,4 +3,9 @@
     <string name="welcome">Welcome</string>
     <string name="play">play</string>
     <string name="rules">Rules</string>
+    <string name="score">Score</string>
+    <string name="take_your_guess">Take your guess!</string>
+    <string name="lower">LOWER</string>
+    <string name="higher">Higher</string>
+    <string name="equal">equal</string>
 </resources>

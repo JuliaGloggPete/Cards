@@ -3,12 +3,24 @@ package com.example.highlow
 import android.util.Log
 import android.widget.ImageView
 
-class Deck {
+class Deck()  {
 
-    val cardList = mutableListOf<Card>()
+    private var cardList = mutableListOf<Card>()
+    private var garbageList = mutableListOf<Card>()
+
+    //lateinit var currentCard - slänghögen
+    // splice - cardlist.[index current]
+    //
+
+    //lateinit var nextCard
+    init {
+        createCards()
+
+        cardList.shuffle()
+garbageList.add(drawnCard())
+    }
 
     fun createCards() {
-
 
         cardList.add(Card(14, "Spades", R.drawable.spadesace))
         cardList.add(Card(13, "Spades", R.drawable.spadesking))
@@ -63,7 +75,51 @@ class Deck {
         cardList.add(Card(3, "Clubs", R.drawable.clubs3))
         cardList.add(Card(2, "Clubs", R.drawable.clubs2))
 
+    }
+
+
+   /* fun getNewCard():Card{
+        var rnd = (0 until cardList.size).random()
+        return cardList[rnd]
 
     }
+*/
+
+    fun drawnCard():Card {
+
+        var drawnCard = cardList.removeAt(0)
+
+    return drawnCard }
+
+
+
+
+
+
+
+  /*  fun shuffleCardsandgetnewCard(){
+
+        var rnd = (0..51).random()
+        // - kortet på index
+        // minus på rangen
+        currentCard =cardList[rnd]
+
+
+        nextCard = cardList[1]
+
+    }
+    // kärs sen i play activity på varje knapp
+  fun answeredCorrect(): Boolean {
+
+       //button high on click
+     //  if (currentCard > nextCard){
+
+           return true
+       }
+      return false
+
+    }
+*/
+
 }
 
