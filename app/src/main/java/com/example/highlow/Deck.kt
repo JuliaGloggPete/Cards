@@ -4,7 +4,7 @@ class Deck()  {
 
     var cardList = mutableListOf<Card>()
     private var garbageList = mutableListOf<Card>()
-    lateinit var drawnCard: Card
+    lateinit var nextCard: Card
     lateinit var currentCard: Card
    // var currentCard: Card = cardList[0]
 
@@ -18,7 +18,8 @@ class Deck()  {
 
         cardList.shuffle()
 
-garbageList.add(drawnCard())
+
+//garbageList.add(drawnCard())
     }
 
     fun createCards() {
@@ -82,11 +83,11 @@ garbageList.add(drawnCard())
 
     fun drawnCard():Card {
 
-        drawnCard = cardList.removeAt(0)
+        nextCard = cardList.removeAt(0)
         currentCard=cardList[0]
 
 
-    return drawnCard }
+    return nextCard }
 
 
 

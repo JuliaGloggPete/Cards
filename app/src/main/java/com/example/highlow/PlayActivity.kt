@@ -4,16 +4,25 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import android.widget.ImageView
+import android.widget.TextView
 import android.widget.Toast
 
 class PlayActivity : AppCompatActivity() {
     val cardDeck = Deck()
+    var rightGuess = 0
+    lateinit var scoreView: TextView
+
+
+    // todo - winning conditions, write welcome, write rules, change pictures
 
 
     lateinit var showCardImage : ImageView
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_play)
+
+        scoreView = findViewById(R.id.scoreView)
+        scoreView.text = "Score ${rightGuess.toString()}"
 
 
         val higherButton = findViewById<Button>(R.id.higherButton3)
@@ -25,28 +34,40 @@ class PlayActivity : AppCompatActivity() {
 
         higherButton.setOnClickListener {
             cardDeck.drawnCard()
-            if(cardDeck.currentCard.value > cardDeck.drawnCard.value){val toast =
-                Toast.makeText(this,"${cardDeck.currentCard.value}highter ${cardDeck.drawnCard.value}" , Toast.LENGTH_SHORT)
-                toast.show()
+            if(cardDeck.currentCard.value > cardDeck.nextCard.value){
+                rightGuess++
+                //val toast =
+                //Toast.makeText(this,"${cardDeck.currentCard.value}highter ${cardDeck.nextCard.value}" , Toast.LENGTH_SHORT)
+                //toast.show()
 
-
-            } else{val toast = Toast.makeText(this,"${cardDeck.currentCard.value}lower!${cardDeck.drawnCard.value.toString()}", Toast.LENGTH_SHORT)
-                toast.show()}
-
-
-
-
+            } //else{val toast = Toast.makeText(this,"${cardDeck.currentCard.value}lower!${cardDeck.nextCard.value.toString()}", Toast.LENGTH_SHORT)
+                //toast.show()}
+            var cardsLeft = cardDeck.cardList.size
             showCardImage.setImageResource(cardDeck.currentCard.image)
+            scoreView.text = "Score ${rightGuess} CardsLeft ${cardsLeft}"
 
         }
 
         lowerButton.setOnClickListener {
-            showCardImage.setImageResource(cardDeck.drawnCard.image)
+            cardDeck.drawnCard()
+            if(cardDeck.currentCard.value < cardDeck.nextCard.value){
+                rightGuess++
+            }
+            //setter det i fun
+            var cardsLeft = cardDeck.cardList.size
+            showCardImage.setImageResource(cardDeck.currentCard.image)
+            scoreView.text = "Score ${rightGuess} CardsLeft ${cardsLeft}"
+
         }
 
         equalButton.setOnClickListener {
-
-            showCardImage.setImageResource(cardDeck.drawnCard().image)
+            cardDeck.drawnCard()
+            if(cardDeck.currentCard.value == cardDeck.nextCard.value){
+                rightGuess++
+            }
+            var cardsLeft = cardDeck.cardList.size
+            showCardImage.setImageResource(cardDeck.currentCard.image)
+            scoreView.text = "Score ${rightGuess} CardsLeft ${cardsLeft}"
 
         }
 

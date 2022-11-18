@@ -26,9 +26,6 @@ class MainActivity : AppCompatActivity() {
         // android:id="@+id/welcomeTextView" hittade inte men om jag tog bort o satt dit igen så gick det
 
 
-
-
-
         val playButton = findViewById<Button>(R.id.playButton)
 
         playButton.setOnClickListener {
