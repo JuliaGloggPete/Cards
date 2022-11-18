@@ -1,22 +1,23 @@
 package com.example.highlow
 
-import android.util.Log
-import android.widget.ImageView
-
 class Deck()  {
 
-    private var cardList = mutableListOf<Card>()
+    var cardList = mutableListOf<Card>()
     private var garbageList = mutableListOf<Card>()
+    lateinit var drawnCard: Card
+    lateinit var currentCard: Card
+   // var currentCard: Card = cardList[0]
 
     //lateinit var currentCard - slänghögen
     // splice - cardlist.[index current]
     //
 
-    //lateinit var nextCard
+
     init {
         createCards()
 
         cardList.shuffle()
+
 garbageList.add(drawnCard())
     }
 
@@ -78,16 +79,12 @@ garbageList.add(drawnCard())
     }
 
 
-   /* fun getNewCard():Card{
-        var rnd = (0 until cardList.size).random()
-        return cardList[rnd]
-
-    }
-*/
 
     fun drawnCard():Card {
 
-        var drawnCard = cardList.removeAt(0)
+        drawnCard = cardList.removeAt(0)
+        currentCard=cardList[0]
+
 
     return drawnCard }
 
