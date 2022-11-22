@@ -10,16 +10,21 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="#2c6e49"
-        tools:context=".MainActivity">
+        tools:context=".MainActivity"
+        tools:layout_editor_absoluteX="-34dp"
+        tools:layout_editor_absoluteY="-16dp">
 
         <TextView
             android:id="@+id/RulesTextView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="66dp"
+            android:layout_height="48dp"
             android:layout_marginEnd="16dp"
             android:layout_marginBottom="16dp"
+            android:onClick="addRulesFragment"
             android:text="@string/rules"
+            android:textAlignment="textEnd"
             android:textColor="#C8E6C9"
+            android:textSize="16sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent" />
 
@@ -27,28 +32,31 @@
             android:id="@+id/playButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="48dp"
+            android:layout_marginTop="43dp"
+            android:layout_marginBottom="145dp"
             android:backgroundTint="#EFEBCE"
             android:text="@string/play"
             android:textColor="#d68c45"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.498"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/welcomeTextView" />
+            app:layout_constraintTop_toBottomOf="@+id/frameLayout" />
 
-        <TextView
-            android:id="@+id/welcomeTextView"
-            android:layout_width="212dp"
-            android:layout_height="373dp"
-            android:layout_marginTop="100dp"
-            android:background="#FFC9B9"
-            android:backgroundTint="#fefee3"
-            android:text="@string/welcome"
-            android:textColor="#3E2723"
+        <FrameLayout
+            android:id="@+id/frameLayout"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="82dp"
+            android:layout_marginTop="43dp"
+            android:layout_marginEnd="82dp"
+            android:layout_marginBottom="32dp"
+            android:background="#fefee3"
+            app:layout_constraintBottom_toTopOf="@+id/playButton"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.497"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent">
+
+        </FrameLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

@@ -10,7 +10,9 @@ import android.widget.Toast
 class PlayActivity : AppCompatActivity() {
     val cardDeck = Deck()
     var rightGuess = 0
+    var lives = 3
     lateinit var scoreView: TextView
+    lateinit var livesleft : TextView
 
 
     // todo - winning conditions, write welcome, write rules, change pictures
@@ -23,6 +25,7 @@ class PlayActivity : AppCompatActivity() {
 
         scoreView = findViewById(R.id.scoreView)
         scoreView.text = "Score ${rightGuess.toString()}"
+        livesleft = findViewById(R.id.lifes)
 
 
         val higherButton = findViewById<Button>(R.id.higherButton3)
@@ -40,7 +43,16 @@ class PlayActivity : AppCompatActivity() {
                 //Toast.makeText(this,"${cardDeck.currentCard.value}highter ${cardDeck.nextCard.value}" , Toast.LENGTH_SHORT)
                 //toast.show()
 
-            } //else{val toast = Toast.makeText(this,"${cardDeck.currentCard.value}lower!${cardDeck.nextCard.value.toString()}", Toast.LENGTH_SHORT)
+            } else{
+                lives--
+                if (lives==0){
+                    livesleft.text = "GAME OVER"
+
+                }
+            }
+
+
+            //else{val toast = Toast.makeText(this,"${cardDeck.currentCard.value}lower!${cardDeck.nextCard.value.toString()}", Toast.LENGTH_SHORT)
                 //toast.show()}
             var cardsLeft = cardDeck.cardList.size
             showCardImage.setImageResource(cardDeck.currentCard.image)
@@ -52,6 +64,12 @@ class PlayActivity : AppCompatActivity() {
             cardDeck.drawnCard()
             if(cardDeck.currentCard.value < cardDeck.nextCard.value){
                 rightGuess++
+            }else{
+                lives--
+                if (lives==0){
+                    livesleft.text = "Lives ${lives}"
+
+                }
             }
             //setter det i fun
             var cardsLeft = cardDeck.cardList.size
@@ -64,6 +82,15 @@ class PlayActivity : AppCompatActivity() {
             cardDeck.drawnCard()
             if(cardDeck.currentCard.value == cardDeck.nextCard.value){
                 rightGuess++
+            }else{
+                lives--
+                if (lives==0){
+                    livesleft.text = "GAME OVER"
+                   // addGamOverFragment()
+
+
+                }
+
             }
             var cardsLeft = cardDeck.cardList.size
             showCardImage.setImageResource(cardDeck.currentCard.image)
@@ -72,7 +99,24 @@ class PlayActivity : AppCompatActivity() {
         }
 
 
+
+
+       fun GameOver(){
+
+
+
+        }
+
+
     }
 
+    /*fun addGamOverFragment(){
+        val gameOverFragment = GameOverFragment()
+        val transaction = supportFragmentManager.beginTransaction()
+        transaction.add(R.id.frame_GameOver,gameOverFragment, "gameover")
+        transaction.commit()
 
+
+
+    }*/
 }

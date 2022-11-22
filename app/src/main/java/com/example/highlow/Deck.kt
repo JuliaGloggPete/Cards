@@ -83,9 +83,10 @@ class Deck()  {
 
     fun drawnCard():Card {
 
+
         nextCard = cardList.removeAt(0)
         currentCard=cardList[0]
-
+        garbageList.add(currentCard)
 
     return nextCard }
 
