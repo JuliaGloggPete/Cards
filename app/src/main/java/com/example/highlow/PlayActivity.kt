@@ -1,21 +1,24 @@
 package com.example.highlow
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
-import android.widget.Toast
 
 class PlayActivity : AppCompatActivity() {
     val cardDeck = Deck()
     var rightGuess = 0
-    var lives = 3
+    var lives = 5
+    var round = 1
     lateinit var scoreView: TextView
     lateinit var livesleft : TextView
 
 
-    // todo - winning conditions, write welcome, write rules, change pictures
+    // todo - winning conditions, write welcome, write rules,
+    // play again needs to reset Highlow
+    // done change pictures
 
 
     lateinit var showCardImage : ImageView
@@ -28,6 +31,8 @@ class PlayActivity : AppCompatActivity() {
         livesleft = findViewById(R.id.lifes)
 
 
+
+
         val higherButton = findViewById<Button>(R.id.higherButton3)
         val lowerButton = findViewById<Button>(R.id.lowerButton)
         val equalButton = findViewById<Button>(R.id.equalbutton)
@@ -36,7 +41,9 @@ class PlayActivity : AppCompatActivity() {
 
 
         higherButton.setOnClickListener {
-            cardDeck.drawnCard()
+            checkWin()
+            cardDeck.drawCard()
+
             if(cardDeck.currentCard.value > cardDeck.nextCard.value){
                 rightGuess++
                 //val toast =
@@ -45,9 +52,9 @@ class PlayActivity : AppCompatActivity() {
 
             } else{
                 lives--
+               livesleft.text = "you got $lives lives left"
                 if (lives==0){
-                    livesleft.text = "GAME OVER"
-
+                    startGameOverActivity()
                 }
             }
 
@@ -61,13 +68,14 @@ class PlayActivity : AppCompatActivity() {
         }
 
         lowerButton.setOnClickListener {
-            cardDeck.drawnCard()
+            checkWin()
+            cardDeck.drawCard()
             if(cardDeck.currentCard.value < cardDeck.nextCard.value){
                 rightGuess++
             }else{
                 lives--
-                if (lives==0){
-                    livesleft.text = "Lives ${lives}"
+                livesleft.text = "you got $lives lives left"
+                if (lives==0){ startGameOverActivity()
 
                 }
             }
@@ -79,16 +87,15 @@ class PlayActivity : AppCompatActivity() {
         }
 
         equalButton.setOnClickListener {
-            cardDeck.drawnCard()
+            checkWin()
+            cardDeck.drawCard()
             if(cardDeck.currentCard.value == cardDeck.nextCard.value){
                 rightGuess++
             }else{
                 lives--
+                livesleft.text = "you got $lives lives left"
                 if (lives==0){
-                    livesleft.text = "GAME OVER"
-                   // addGamOverFragment()
-
-
+                    startGameOverActivity()
                 }
 
             }
@@ -99,16 +106,29 @@ class PlayActivity : AppCompatActivity() {
         }
 
 
+        livesleft.text = "you got $lives lives left"
+    }
 
-
-       fun GameOver(){
-
+        fun startGameOverActivity() {
+            val intent = Intent(this, GameOverActivity::class.java)
+            startActivity(intent)
 
 
         }
 
+    fun checkWin(){
+        if (cardDeck.cardList.size.equals(1))
+
+        {cardDeck.newRound()
+
+            lives+2
+            round++
+
+        }
 
     }
+
+
 
     /*fun addGamOverFragment(){
         val gameOverFragment = GameOverFragment()

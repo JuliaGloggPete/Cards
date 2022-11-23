@@ -13,5 +13,9 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="lives_left">Lives left</string>
-    <string name="rules_for_high_low">Rules for HIgh Low</string>
+    <string name="rules_for_high_low">Rules for HIgh Low \n\n
+    To play the game you need to guess if a card is higher, lower or equal to the previous one.
+    You can guess wrong 10 times during a round, if you guess wrong the eleventh time the game is over.
+    If you make it through a whole round, you will get two new lives added.</string>
+    <string name="game_over">Game over!</string>
 </resources>

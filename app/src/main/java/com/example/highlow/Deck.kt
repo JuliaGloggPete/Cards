@@ -12,12 +12,10 @@ class Deck()  {
     // splice - cardlist.[index current]
     //
 
-
     init {
         createCards()
 
         cardList.shuffle()
-
 
 //garbageList.add(drawnCard())
     }
@@ -81,14 +79,28 @@ class Deck()  {
 
 
 
-    fun drawnCard():Card {
+    fun drawCard():Card {
 
 
         nextCard = cardList.removeAt(0)
         currentCard=cardList[0]
+
+
         garbageList.add(currentCard)
 
     return nextCard }
+
+
+    fun newRound(){
+        garbageList.add(currentCard)
+        garbageList.shuffle()
+
+        cardList.addAll(garbageList)
+
+        cardList.shuffle()
+
+
+    }
 
 
 

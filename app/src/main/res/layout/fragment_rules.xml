@@ -8,8 +8,17 @@
 
     <!-- TODO: Update blank fragment layout -->
     <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/rules_for_high_low" />
+        android:id="@+id/tv_rules"
+        android:layout_width="wrap_content"
+        android:layout_height="887dp"
+        android:layoutDirection="locale"
+        android:lineSpacingExtra="4sp"
+        android:paddingStart="10sp"
+        android:paddingLeft="10sp"
+        android:paddingTop="50sp"
+        android:paddingRight="10sp"
+        android:text="@string/rules_for_high_low"
+        android:textAlignment="center"
+        android:textDirection="locale" />
 
 </FrameLayout>
