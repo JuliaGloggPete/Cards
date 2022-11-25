@@ -3,6 +3,7 @@ package com.example.highlow
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.MotionEvent
 import android.view.View
 import android.widget.Button
 import android.widget.ImageView
@@ -16,7 +17,7 @@ class MainActivity : AppCompatActivity() {
     val cardDeck = Deck()
 
     lateinit var welcomeTextView :TextView
-
+    val rulesFragment = RulesFragment()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -57,10 +58,35 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun addRulesFragment (view: View){
-        val rulesFragment = RulesFragment()
+
         val transaction = supportFragmentManager.beginTransaction()
         transaction.add(R.id.frameLayout, rulesFragment, "rules" )
         transaction.commit()
+
+
+    }
+
+    override fun onTouchEvent(event: MotionEvent?): Boolean {
+
+        if(event?.action == MotionEvent.ACTION_UP){
+            removeRulesFragment()
+        }
+
+        return true
+
+    }
+    fun removeRulesFragment (){
+
+
+        if ( rulesFragment != null) {
+
+            val transaction = supportFragmentManager.beginTransaction()
+            transaction.remove(rulesFragment)
+            transaction.commit()
+
+
+        }
+
 
 
     }

@@ -6,11 +6,12 @@ import android.os.Bundle
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
+import android.widget.Toast
 
 class PlayActivity : AppCompatActivity() {
     val cardDeck = Deck()
     var rightGuess = 0
-    var lives = 5
+    var lives = 15
     var round = 1
     lateinit var scoreView: TextView
     lateinit var livesleft : TextView
@@ -46,9 +47,7 @@ class PlayActivity : AppCompatActivity() {
 
             if(cardDeck.currentCard.value > cardDeck.nextCard.value){
                 rightGuess++
-                //val toast =
-                //Toast.makeText(this,"${cardDeck.currentCard.value}highter ${cardDeck.nextCard.value}" , Toast.LENGTH_SHORT)
-                //toast.show()
+
 
             } else{
                 lives--
@@ -120,6 +119,9 @@ class PlayActivity : AppCompatActivity() {
         if (cardDeck.cardList.size.equals(1))
 
         {cardDeck.newRound()
+            val toast =
+            Toast.makeText(this,"You made it through a whole round and got 2 more lives" , Toast.LENGTH_SHORT)
+            toast.show()
 
             lives+2
             round++
