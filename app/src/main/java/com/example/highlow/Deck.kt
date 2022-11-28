@@ -22,10 +22,10 @@ class Deck()  {
 
     fun createCards() {
 
-        cardList.add(Card(14, "Spades", R.drawable.spadesace))
-        cardList.add(Card(13, "Spades", R.drawable.spadesking))
-        cardList.add(Card(12, "Spades", R.drawable.spadesdame))
-        cardList.add(Card(11, "Spades", R.drawable.spadesjack))
+        cardList.add(Card(14, "Spades", R.drawable.spades_ace))
+        cardList.add(Card(13, "Spades", R.drawable.spades_king))
+        cardList.add(Card(12, "Spades", R.drawable.spades_queen))
+        cardList.add(Card(11, "Spades", R.drawable.spades_jack))
         cardList.add(Card(10, "Spades", R.drawable.spades10))
         cardList.add(Card(9, "Spades", R.drawable.spades9))
         cardList.add(Card(8, "Spades", R.drawable.spades8))
@@ -81,12 +81,12 @@ class Deck()  {
 
     fun drawCard():Card {
 
-
         nextCard = cardList.removeAt(0)
         currentCard=cardList[0]
 
 
-        garbageList.add(currentCard)
+
+        garbageList.add(0,currentCard)
 
     return nextCard }
 
