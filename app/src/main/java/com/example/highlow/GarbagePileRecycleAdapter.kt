@@ -21,8 +21,8 @@ var layoutInflater = LayoutInflater.from(context)
  val oldCard = garbagelist[position]
         //holder.oldCardTextView.text = oldCard.image.toString()
         //var showOldCard= oldCard.image
-        holder.oldCardTextView.text = oldCard.value.toString()
-        ///holder.oldCardImgeView.setImageResource(oldCard.image)
+        //holder.oldCardTextView.text = oldCard.value.toString()
+        holder.oldCardImgeView.setImageResource(oldCard.image)
        // holder.oldCardTextView.setCompoundDrawablesRelativeWithIntrinsicBounds(0,showOldCard,0,0)
 
 
@@ -35,14 +35,14 @@ var layoutInflater = LayoutInflater.from(context)
 
 
 
-        return garbagelist.size
+        return garbagelist.size-1
     }
 
 
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView){
-       var oldCardTextView = itemView.findViewById<TextView>(R.id.tv_oldCard)
-        var oldCardSuitTextView = itemView.findViewById<TextView>(R.id.tv_oldCardsuit)
-        //var oldCardImgeView = itemView.findViewById<ImageView>(R.id.iv_oldCard)
+      // var oldCardTextView = itemView.findViewById<TextView>(R.id.tv_oldCard)
+        //var oldCardSuitTextView = itemView.findViewById<TextView>(R.id.tv_oldCardsuit)
+        var oldCardImgeView = itemView.findViewById<ImageView>(R.id.iv_oldCard)
 
 
 
