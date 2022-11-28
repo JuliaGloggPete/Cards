@@ -7,19 +7,25 @@ import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 
 class PlayActivity : AppCompatActivity() {
     val cardDeck = Deck()
     var rightGuess = 0
-    var lives = 15
+    var lives = 75
     var round = 1
     lateinit var scoreView: TextView
     lateinit var livesleft : TextView
+    //var oldCards = mutableListOf<Card>()
 
 
-    // todo - winning conditions, write welcome, write rules,
+
+
+    // done - winning conditions, write welcome, write rules,
     // play again needs to reset Highlow
     // done change pictures
+    //done nya lista börjar med 53 kort - not ok
 
 
     lateinit var showCardImage : ImageView
@@ -33,18 +39,28 @@ class PlayActivity : AppCompatActivity() {
 
 
 
+        var recyclerView = findViewById<RecyclerView>(R.id.recyclerView)
+        recyclerView.layoutManager = LinearLayoutManager(this)
+
+
+
+
+
 
         val higherButton = findViewById<Button>(R.id.higherButton3)
         val lowerButton = findViewById<Button>(R.id.lowerButton)
         val equalButton = findViewById<Button>(R.id.equalbutton)
         showCardImage = findViewById(R.id.iv_Card)
         showCardImage.setImageResource(cardDeck.cardList[0].image)
-
+        cardDeck.garbageList.add(cardDeck.cardList[0])
 
         higherButton.setOnClickListener {
             checkWin()
             cardDeck.drawCard()
 
+            val adapter = GarbagePileRecycleAdapter(this, cardDeck.garbageList)
+
+            recyclerView.adapter = adapter
             if(cardDeck.currentCard.value > cardDeck.nextCard.value){
                 rightGuess++
 

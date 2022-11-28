@@ -103,27 +103,30 @@
             app:layout_constraintStart_toEndOf="@+id/lowerButton"
             app:layout_constraintTop_toBottomOf="@+id/iv_Card" />
 
-        <ImageView
-            android:id="@+id/imageView2"
-            android:layout_width="56dp"
-            android:layout_height="77dp"
-            android:layout_marginStart="56dp"
-            android:layout_marginTop="236dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/iv_Card" />
-
         <TextView
             android:id="@+id/lifes"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="26dp"
             android:layout_marginTop="25dp"
-            android:layout_marginBottom="316dp"
             android:text="@string/lives_left"
             android:textColor="#FFFFFF"
-            app:layout_constraintBottom_toTopOf="@+id/imageView2"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerView"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="42dp"
+            android:layout_marginTop="93dp"
+            android:layout_marginEnd="24dp"
+            android:layout_marginBottom="14dp"
+            app:layout_constraintBottom_toTopOf="@+id/higherButton3"
+            app:layout_constraintEnd_toStartOf="@+id/iv_Card"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView3"
+            tools:listitem="@layout/list_item" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -3,7 +3,7 @@ package com.example.highlow
 class Deck()  {
 
     var cardList = mutableListOf<Card>()
-    private var garbageList = mutableListOf<Card>()
+   var garbageList = mutableListOf<Card>()
     lateinit var nextCard: Card
     lateinit var currentCard: Card
    // var currentCard: Card = cardList[0]
@@ -92,10 +92,11 @@ class Deck()  {
 
 
     fun newRound(){
-        garbageList.add(currentCard)
+        //garbageList.add(currentCard)
         garbageList.shuffle()
 
         cardList.addAll(garbageList)
+        garbageList.clear()
 
         cardList.shuffle()
 
