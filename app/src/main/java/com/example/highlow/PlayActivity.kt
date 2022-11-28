@@ -58,9 +58,7 @@ class PlayActivity : AppCompatActivity() {
             checkWin()
             cardDeck.drawCard()
 
-            val adapter = GarbagePileRecycleAdapter(this, cardDeck.garbageList)
 
-            recyclerView.adapter = adapter
             if(cardDeck.currentCard.value > cardDeck.nextCard.value){
                 rightGuess++
 
@@ -71,6 +69,7 @@ class PlayActivity : AppCompatActivity() {
                 if (lives==0){
                     startGameOverActivity()
                 }
+
             }
 
 
@@ -79,6 +78,9 @@ class PlayActivity : AppCompatActivity() {
             var cardsLeft = cardDeck.cardList.size
             showCardImage.setImageResource(cardDeck.currentCard.image)
             scoreView.text = "Score ${rightGuess} CardsLeft ${cardsLeft}"
+            val adapter = GarbagePileRecycleAdapter(this, cardDeck.garbageList)
+
+            recyclerView.adapter = adapter
 
         }
 
