@@ -9,7 +9,7 @@
     <string name="higher">Higher</string>
     <string name="equal">equal</string>
     <string name="cards">cards</string>
-    <string name="cardsview">cardsview</string>
+    <string name="cards_view">cardsview</string>
     <string name="lives_left">Lives left</string>
     <string name="rules_for_high_low">Rules for HIgh Low \n\n
     To play the game you need to guess if a card is higher, lower or equal to the previous one.
@@ -17,4 +17,7 @@
     If you make it through a whole round, you will get two new lives added.</string>
     <string name="game_over">Game over!</string>
     <string name="list_of_old_cards">list_of_old_cards</string>
+    <string name="play_again">Play Again</string>
+    <string name="backToMenu">Back to menu</string>
+
 </resources>

@@ -10,7 +10,7 @@
     <string name="higher">Höher</string>
     <string name="equal">Gleich</string>
     <string name="cards">cards</string>
-    <string name="cardsview">cardsview</string>
+    <string name="cards_view">cardsview</string>
     <string name="lives_left">Leben: </string>
     <string name="rules_for_high_low">Regeln für HighLow\n\n
    Um das spiel zu spielen müssen Sie erraten ob die nächste Karte höher, niedriger oder gleich im Wert ist
@@ -18,6 +18,8 @@
         Wenn Sie es durch eine ganze Runde schaffen, bekommen Sie zwei extra Leben geschenkt.</string>
     <string name="game_over">Spiel vorbei!</string>
     <string name="list_of_old_cards">list_of_old_cards</string>
+    <string name="play_again">Nochmal Spielen</string>
+    <string name="backToMenu">Zürück zum Menü</string>
 
 
 </resources>
