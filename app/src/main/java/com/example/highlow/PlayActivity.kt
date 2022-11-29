@@ -11,43 +11,30 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 
 class PlayActivity : AppCompatActivity() {
-    val cardDeck = Deck()
-    var rightGuess = 0
-    var lives = 75
-    var round = 1
-    lateinit var scoreView: TextView
-    lateinit var livesleft : TextView
-    //var oldCards = mutableListOf<Card>()
+    private val cardDeck = Deck()
+    private var rightGuess = 0
+    private var lives = 15
+    private var round = 1
+    private lateinit var scoreView: TextView
+    private lateinit var livesLeft: TextView
+    private lateinit var roundView: TextView
 
-
-
-
-    // done - winning conditions, write welcome, write rules,
-    // play again needs to reset Highlow
-    // done change pictures
-    //done nya lista börjar med 53 kort - not ok
-
-
-    lateinit var showCardImage : ImageView
+    lateinit var showCardImage: ImageView
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_play)
 
         scoreView = findViewById(R.id.scoreView)
-        scoreView.text = "Score ${rightGuess.toString()}"
-        livesleft = findViewById(R.id.lifes)
+        scoreView.text = "Score ${rightGuess}"
+        livesLeft = findViewById(R.id.lifes)
+        roundView = findViewById(R.id.tv_round)
 
 
-
-        var recyclerView = findViewById<RecyclerView>(R.id.recyclerView)
+        val recyclerView = findViewById<RecyclerView>(R.id.recyclerView)
         recyclerView.layoutManager = LinearLayoutManager(this)
 
 
-
-
-
-
-        val higherButton = findViewById<Button>(R.id.higherButton3)
+        val higherButton = findViewById<Button>(R.id.higherButton)
         val lowerButton = findViewById<Button>(R.id.lowerButton)
         val equalButton = findViewById<Button>(R.id.equalbutton)
         showCardImage = findViewById(R.id.iv_Card)
@@ -58,28 +45,15 @@ class PlayActivity : AppCompatActivity() {
             checkWin()
             cardDeck.drawCard()
 
-
-            if(cardDeck.currentCard.value > cardDeck.nextCard.value){
+            if (cardDeck.currentCard.value > cardDeck.nextCard.value) {
                 rightGuess++
 
-
-            } else{
-                lives--
-               livesleft.text = "you got $lives lives left"
-                if (lives==0){
-                    startGameOverActivity()
-                }
+            } else {
+                wrongAnswerConsequences()
 
             }
-
-
-            //else{val toast = Toast.makeText(this,"${cardDeck.currentCard.value}lower!${cardDeck.nextCard.value.toString()}", Toast.LENGTH_SHORT)
-                //toast.show()}
-            var cardsLeft = cardDeck.cardList.size
-            showCardImage.setImageResource(cardDeck.currentCard.image)
-            scoreView.text = "Score ${rightGuess} CardsLeft ${cardsLeft}"
+            scoreAndCardsViewHandling()
             val adapter = GarbagePileRecycleAdapter(this, cardDeck.garbageList)
-
             recyclerView.adapter = adapter
 
         }
@@ -87,76 +61,74 @@ class PlayActivity : AppCompatActivity() {
         lowerButton.setOnClickListener {
             checkWin()
             cardDeck.drawCard()
-            if(cardDeck.currentCard.value < cardDeck.nextCard.value){
+            if (cardDeck.currentCard.value < cardDeck.nextCard.value) {
                 rightGuess++
-            }else{
-                lives--
-                livesleft.text = "you got $lives lives left"
-                if (lives==0){ startGameOverActivity()
-
-                }
+            } else {
+                wrongAnswerConsequences()
             }
-            //setter det i fun
-            var cardsLeft = cardDeck.cardList.size
-            showCardImage.setImageResource(cardDeck.currentCard.image)
-            scoreView.text = "Score ${rightGuess} CardsLeft ${cardsLeft}"
+            scoreAndCardsViewHandling()
+            val adapter = GarbagePileRecycleAdapter(this, cardDeck.garbageList)
+            recyclerView.adapter = adapter
 
         }
 
         equalButton.setOnClickListener {
             checkWin()
             cardDeck.drawCard()
-            if(cardDeck.currentCard.value == cardDeck.nextCard.value){
+            if (cardDeck.currentCard.value == cardDeck.nextCard.value) {
                 rightGuess++
-            }else{
-                lives--
-                livesleft.text = "you got $lives lives left"
-                if (lives==0){
-                    startGameOverActivity()
-                }
-
+            } else {
+                wrongAnswerConsequences()
             }
-            var cardsLeft = cardDeck.cardList.size
-            showCardImage.setImageResource(cardDeck.currentCard.image)
-            scoreView.text = "Score ${rightGuess} CardsLeft ${cardsLeft}"
+            scoreAndCardsViewHandling()
+            val adapter = GarbagePileRecycleAdapter(this, cardDeck.garbageList)
+            recyclerView.adapter = adapter
 
         }
 
-
-        livesleft.text = "you got $lives lives left"
+        livesLeft.text = "$lives lives left"
+        roundView.text = "Round $round"
     }
 
-        fun startGameOverActivity() {
-            val intent = Intent(this, GameOverActivity::class.java)
-            startActivity(intent)
+    private fun startGameOverActivity() {
+        val intent = Intent(this, GameOverActivity::class.java)
+        startActivity(intent)
+    }
 
-
-        }
-
-    fun checkWin(){
-        if (cardDeck.cardList.size.equals(1))
-
-        {cardDeck.newRound()
+    private fun checkWin() {
+        if (cardDeck.cardList.size.equals(1)) {
             val toast =
-            Toast.makeText(this,"You made it through a whole round and got 2 more lives" , Toast.LENGTH_SHORT)
+                Toast.makeText(
+                    this,
+                    "You made it through a whole round and got 2 more lives",
+                    Toast.LENGTH_SHORT
+                )
             toast.show()
-
-            lives+2
+            lives += 2
             round++
+            roundView.text = "Round $round"
+
+            cardDeck.newRound()
+        }
+    }
+
+    private fun wrongAnswerConsequences() {
+
+        lives--
+        livesLeft.text = " $lives lives left"
+        if (lives == 0) {
+            startGameOverActivity()
 
         }
 
     }
 
+    private fun scoreAndCardsViewHandling() {
 
+        var cardsLeft = cardDeck.cardList.size
+        showCardImage.setImageResource(cardDeck.currentCard.image)
+        scoreView.text = "Score ${rightGuess} CardsLeft ${cardsLeft}"
 
-    /*fun addGamOverFragment(){
-        val gameOverFragment = GameOverFragment()
-        val transaction = supportFragmentManager.beginTransaction()
-        transaction.add(R.id.frame_GameOver,gameOverFragment, "gameover")
-        transaction.commit()
+    }
 
-
-
-    }*/
 }

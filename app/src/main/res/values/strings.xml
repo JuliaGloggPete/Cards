@@ -16,4 +16,5 @@
     You can guess wrong 15 times during a round, if you guess wrong the 16th time the game is over.
     If you make it through a whole round, you will get two new lives added.</string>
     <string name="game_over">Game over!</string>
+    <string name="list_of_old_cards">list_of_old_cards</string>
 </resources>

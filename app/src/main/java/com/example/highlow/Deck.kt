@@ -6,18 +6,12 @@ class Deck()  {
    var garbageList = mutableListOf<Card>()
     lateinit var nextCard: Card
     lateinit var currentCard: Card
-   // var currentCard: Card = cardList[0]
-
-    //lateinit var currentCard - slänghögen
-    // splice - cardlist.[index current]
-    //
 
     init {
         createCards()
 
         cardList.shuffle()
 
-//garbageList.add(drawnCard())
     }
 
     fun createCards() {
@@ -77,14 +71,10 @@ class Deck()  {
 
     }
 
-
-
     fun drawCard():Card {
 
         nextCard = cardList.removeAt(0)
         currentCard=cardList[0]
-
-
 
         garbageList.add(0,currentCard)
 
@@ -92,7 +82,6 @@ class Deck()  {
 
 
     fun newRound(){
-        //garbageList.add(currentCard)
         garbageList.shuffle()
 
         cardList.addAll(garbageList)
@@ -100,38 +89,9 @@ class Deck()  {
 
         cardList.shuffle()
 
-
     }
 
 
-
-
-
-
-
-  /*  fun shuffleCardsandgetnewCard(){
-
-        var rnd = (0..51).random()
-        // - kortet på index
-        // minus på rangen
-        currentCard =cardList[rnd]
-
-
-        nextCard = cardList[1]
-
-    }
-    // kärs sen i play activity på varje knapp
-  fun answeredCorrect(): Boolean {
-
-       //button high on click
-     //  if (currentCard > nextCard){
-
-           return true
-       }
-      return false
-
-    }
-*/
 
 }
 

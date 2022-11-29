@@ -17,7 +17,7 @@
         Sie können 15 mal falsch liegen, nach dem 16 mal ist das Spiel vorbei!
         Wenn Sie es durch eine ganze Runde schaffen, bekommen Sie zwei extra Leben geschenkt.</string>
     <string name="game_over">Spiel vorbei!</string>
-
+    <string name="list_of_old_cards">list_of_old_cards</string>
 
 
 </resources>

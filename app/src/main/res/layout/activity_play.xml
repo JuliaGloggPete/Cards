@@ -20,6 +20,17 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0">
 
+        <TextView
+            android:id="@+id/tv_round"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:layout_marginEnd="24dp"
+            android:text="Round:"
+            android:textColor="#FFFFFF"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
         <Button
             android:id="@+id/lowerButton"
             android:layout_width="wrap_content"
@@ -35,7 +46,7 @@
             app:layout_constraintTop_toBottomOf="@+id/iv_Card" />
 
         <Button
-            android:id="@+id/higherButton3"
+            android:id="@+id/higherButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="96dp"
@@ -107,8 +118,8 @@
             android:id="@+id/lifes"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="26dp"
-            android:layout_marginTop="25dp"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="24dp"
             android:text="@string/lives_left"
             android:textColor="#FFFFFF"
             app:layout_constraintStart_toStartOf="parent"
@@ -122,7 +133,8 @@
             android:layout_marginTop="150dp"
             android:layout_marginEnd="4dp"
             android:layout_marginBottom="14dp"
-            app:layout_constraintBottom_toTopOf="@+id/higherButton3"
+            android:contentDescription="@string/list_of_old_cards"
+            app:layout_constraintBottom_toTopOf="@+id/higherButton"
             app:layout_constraintEnd_toStartOf="@+id/iv_Card"
             app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"
