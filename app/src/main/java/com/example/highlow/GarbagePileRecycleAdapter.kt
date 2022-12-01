@@ -20,9 +20,6 @@ class GarbagePileRecycleAdapter(val context: Context, val garbagelist: List<Card
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val oldCard = garbagelist[position]
-        //holder.oldCardTextView.text = oldCard.image.toString()
-        //var showOldCard= oldCard.image
-        //holder.oldCardTextView.text = oldCard.value.toString()
         holder.oldCardImgeView.setImageResource(oldCard.image)
         // holder.oldCardTextView.setCompoundDrawablesRelativeWithIntrinsicBounds(0,showOldCard,0,0)
 

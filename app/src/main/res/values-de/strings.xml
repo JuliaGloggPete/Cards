@@ -3,17 +3,18 @@
     <string name="app_name">HighLow</string>
     <string name="welcome">Willkommen zu  "High-Low"! \n Drücke auf Start \n um ein neues Spiel zu beginnen</string>
     <string name="play">Start</string>
+    <string name="round">Runde: %1$s</string>
     <string name="rules">Regeln</string>
-    <string name="score">Score</string>
+    <string name="score">Score: %1$s \nverbleibende Karten: %2$s</string>
     <string name="take_your_guess">Was kommt als nächstes?</string>
     <string name="lower">Niedriger</string>
     <string name="higher">Höher</string>
     <string name="equal">Gleich</string>
     <string name="cards">cards</string>
     <string name="cards_view">cardsview</string>
-    <string name="lives_left">Leben: </string>
+    <string name="lives_left">Leben:  %1$s </string>
     <string name="rules_for_high_low">Regeln für HighLow\n\n
-   Um das spiel zu spielen müssen Sie erraten ob die nächste Karte höher, niedriger oder gleich im Wert ist
+   Um das Spiel zu spielen müssen Sie erraten ob die nächste Karte höher, niedriger oder gleich im Wert ist
         Sie können 15 mal falsch liegen, nach dem 16 mal ist das Spiel vorbei!
         Wenn Sie es durch eine ganze Runde schaffen, bekommen Sie zwei extra Leben geschenkt.</string>
     <string name="game_over">Spiel vorbei!</string>

@@ -2,15 +2,16 @@
     <string name="app_name">HighLow</string>
     <string name="welcome">Welcome to "High-Low"! \n Press "Play" to start \n a new Game!</string>
     <string name="play">play</string>
+    <string name="round">Round: %1$s</string>
     <string name="rules">Rules</string>
-    <string name="score">Score</string>
+    <string name="score">Score: %1$s \nCards left : %2$s</string>
     <string name="take_your_guess">Take your guess!</string>
     <string name="lower">LOWER</string>
     <string name="higher">Higher</string>
     <string name="equal">equal</string>
     <string name="cards">cards</string>
     <string name="cards_view">cardsview</string>
-    <string name="lives_left">Lives left</string>
+    <string name="lives_left">Lives left: %1$s </string>
     <string name="rules_for_high_low">Rules for HIgh Low \n\n
     To play the game you need to guess if a card is higher, lower or equal to the previous one.
     You can guess wrong 15 times during a round, if you guess wrong the 16th time the game is over.

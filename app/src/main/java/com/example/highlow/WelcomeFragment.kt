@@ -15,11 +15,12 @@ class WelcomeFragment() : Fragment() {
     ): View? {
 
 
-        val welcomeView = inflater.inflate(R.layout.fragment_welcome, container,false
+        val welcomeView = inflater.inflate(
+            R.layout.fragment_welcome, container, false
         )
 
 
-return welcomeView
+        return welcomeView
     }
 
 

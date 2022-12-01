@@ -13,11 +13,12 @@ import androidx.recyclerview.widget.RecyclerView
 class PlayActivity : AppCompatActivity() {
     private val cardDeck = Deck()
     private var rightGuess = 0
-    private var lives = 15
+    private var lives = 55
     private var round = 1
     private lateinit var scoreView: TextView
     private lateinit var livesLeft: TextView
     private lateinit var roundView: TextView
+
 
     lateinit var showCardImage: ImageView
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -28,7 +29,6 @@ class PlayActivity : AppCompatActivity() {
         scoreView.text = "Score ${rightGuess}"
         livesLeft = findViewById(R.id.lifes)
         roundView = findViewById(R.id.tv_round)
-
 
         val recyclerView = findViewById<RecyclerView>(R.id.recyclerView)
         recyclerView.layoutManager = LinearLayoutManager(this)
@@ -86,8 +86,9 @@ class PlayActivity : AppCompatActivity() {
 
         }
 
-        livesLeft.text = "$lives lives left"
-        roundView.text = "Round $round"
+       // livesLeft.text = "$lives lives left"
+        livesLeft.text = getString(R.string.lives_left, lives.toString())
+        roundView.text = getString(R.string.round,round.toString())
     }
 
     private fun startGameOverActivity() {
@@ -106,8 +107,8 @@ class PlayActivity : AppCompatActivity() {
             toast.show()
             lives += 2
             round++
-            roundView.text = "Round $round"
-
+            roundView.text = getString(R.string.round,round.toString())
+            livesLeft.text = getString(R.string.lives_left, lives.toString())
             cardDeck.newRound()
         }
     }
@@ -115,7 +116,7 @@ class PlayActivity : AppCompatActivity() {
     private fun wrongAnswerConsequences() {
 
         lives--
-        livesLeft.text = " $lives lives left"
+        livesLeft.text = getString(R.string.lives_left, lives.toString())
         if (lives == 0) {
             startGameOverActivity()
 
@@ -127,7 +128,7 @@ class PlayActivity : AppCompatActivity() {
 
         var cardsLeft = cardDeck.cardList.size
         showCardImage.setImageResource(cardDeck.currentCard.image)
-        scoreView.text = "Score ${rightGuess} CardsLeft ${cardsLeft}"
+        scoreView.text = getString(R.string.score,rightGuess.toString(),cardsLeft.toString())
 
     }
 
