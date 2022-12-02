@@ -1,5 +1,6 @@
 # Cards
 
+the previous rules and layout for this game can be seen in the attached files
 
     To play the game you need to guess if a card is higher, lower or equal to the previous one.
     You can guess wrong 15 times during a round, if you guess wrong the 16th time the game is over.
