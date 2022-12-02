@@ -13,7 +13,7 @@ import androidx.recyclerview.widget.RecyclerView
 class PlayActivity : AppCompatActivity() {
     private val cardDeck = Deck()
     private var rightGuess = 0
-    private var lives = 55
+    private var lives = 15
     private var round = 1
     private lateinit var scoreView: TextView
     private lateinit var livesLeft: TextView
