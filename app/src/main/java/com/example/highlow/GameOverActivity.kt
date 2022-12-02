@@ -4,9 +4,6 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
-import android.widget.Toast
-import androidx.core.content.ContextCompat.startActivity
-import androidx.core.view.ContentInfoCompat.Flags
 
 class GameOverActivity : AppCompatActivity() {
 
@@ -14,11 +11,11 @@ class GameOverActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_game_over)
 
-        val quitButton = findViewById<Button>(R.id.btn_quit)
+        val backToMenueButton = findViewById<Button>(R.id.btn_backToMenue)
         val againButton = findViewById<Button>(R.id.btn_playAgain)
 
 
-        quitButton.setOnClickListener {
+        backToMenueButton.setOnClickListener {
             val intent = Intent(this, MainActivity::class.java)
             intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
             startActivity(intent)

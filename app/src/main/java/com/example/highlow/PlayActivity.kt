@@ -18,6 +18,7 @@ class PlayActivity : AppCompatActivity() {
     private lateinit var scoreView: TextView
     private lateinit var livesLeft: TextView
     private lateinit var roundView: TextView
+    private var adapter : PlayedCardsRecycleAdapter? = null
 
 
     lateinit var showCardImage: ImageView
@@ -38,8 +39,8 @@ class PlayActivity : AppCompatActivity() {
         val lowerButton = findViewById<Button>(R.id.lowerButton)
         val equalButton = findViewById<Button>(R.id.equalbutton)
         showCardImage = findViewById(R.id.iv_Card)
-        showCardImage.setImageResource(cardDeck.cardList[0].image)
-        cardDeck.garbageList.add(cardDeck.cardList[0])
+        showCardImage.setImageResource(cardDeck.listOfCard[0].image)
+        cardDeck.listOfplayedCards.add(cardDeck.listOfCard[0])
 
         higherButton.setOnClickListener {
             checkWin()
@@ -53,8 +54,7 @@ class PlayActivity : AppCompatActivity() {
 
             }
             scoreAndCardsViewHandling()
-            val adapter = GarbagePileRecycleAdapter(this, cardDeck.garbageList)
-            recyclerView.adapter = adapter
+            updateRecyclerViewData(recyclerView)
 
         }
 
@@ -67,8 +67,7 @@ class PlayActivity : AppCompatActivity() {
                 wrongAnswerConsequences()
             }
             scoreAndCardsViewHandling()
-            val adapter = GarbagePileRecycleAdapter(this, cardDeck.garbageList)
-            recyclerView.adapter = adapter
+            updateRecyclerViewData(recyclerView)
 
         }
 
@@ -81,8 +80,7 @@ class PlayActivity : AppCompatActivity() {
                 wrongAnswerConsequences()
             }
             scoreAndCardsViewHandling()
-            val adapter = GarbagePileRecycleAdapter(this, cardDeck.garbageList)
-            recyclerView.adapter = adapter
+            updateRecyclerViewData(recyclerView)
 
         }
 
@@ -91,17 +89,25 @@ class PlayActivity : AppCompatActivity() {
         roundView.text = getString(R.string.round,round.toString())
     }
 
+    private fun updateRecyclerViewData(recyclerView: RecyclerView) {
+        val listOfPlayedCards = cardDeck.listOfplayedCards.toList().toMutableList()
+        listOfPlayedCards.removeAt(0)
+
+        adapter = PlayedCardsRecycleAdapter(this, listOfPlayedCards)
+        recyclerView.adapter = adapter
+    }
+
     private fun startGameOverActivity() {
         val intent = Intent(this, GameOverActivity::class.java)
         startActivity(intent)
     }
 
     private fun checkWin() {
-        if (cardDeck.cardList.size.equals(1)) {
+        if (cardDeck.listOfCard.size.equals(1)) {
             val toast =
                 Toast.makeText(
                     this,
-                    "You made it through a whole round and got 2 more lives",
+                    getString(R.string.nextRound),
                     Toast.LENGTH_SHORT
                 )
             toast.show()
@@ -119,14 +125,13 @@ class PlayActivity : AppCompatActivity() {
         livesLeft.text = getString(R.string.lives_left, lives.toString())
         if (lives == 0) {
             startGameOverActivity()
-
         }
 
     }
 
     private fun scoreAndCardsViewHandling() {
 
-        var cardsLeft = cardDeck.cardList.size
+        val cardsLeft = cardDeck.listOfCard.size
         showCardImage.setImageResource(cardDeck.currentCard.image)
         scoreView.text = getString(R.string.score,rightGuess.toString(),cardsLeft.toString())
 

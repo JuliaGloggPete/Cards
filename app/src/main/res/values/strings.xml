@@ -20,5 +20,6 @@
     <string name="list_of_old_cards">list_of_old_cards</string>
     <string name="play_again">Play Again</string>
     <string name="backToMenu">Back to menu</string>
+    <string name="nextRound">Congrats! You made it through this round and got 2 more lives</string>
 
 </resources>
